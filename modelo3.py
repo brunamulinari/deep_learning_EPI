@@ -32,7 +32,7 @@ def load_edgetpu_delegate(options=None):
 
 # Carrega o modelo e adquire informações das entradas
 # Load the TFLite model and allocate tensors.
-interpreter = make_interpreter(model_path='modelo3.tflite', experimental_delegates=load_edgetpu_delegate({'device': 'usb'}))
+interpreter = tflite.Interpreter(model_path='modelo3.tflite', experimental_delegates=load_edgetpu_delegate({'device': 'usb'}))
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 
