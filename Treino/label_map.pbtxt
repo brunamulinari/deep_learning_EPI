@@ -1,0 +1,9 @@
+item {
+    id: 1
+    name: 'sem_capacete'
+}
+
+item {
+    id: 2
+    name: 'com_capacete'
+}
