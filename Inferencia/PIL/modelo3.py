@@ -1,6 +1,6 @@
 # Carrega bibliotecas necessárias
 import tflite_runtime.interpreter as tflite
-import plataform
+import platform
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import io
@@ -32,7 +32,7 @@ def load_edgetpu_delegate(options=None):
 
 # Carrega o modelo e adquire informações das entradas
 # Load the TFLite model and allocate tensors.
-interpreter = tflite.Interpreter(model_path='modelo3.tflite', experimental_delegates=[load_edgetpu_delegate({'device': 'usb'})])
+interpreter = tflite.Interpreter(model_path='modelo2_qtd.tflite', experimental_delegates=[load_edgetpu_delegate({'device': 'usb'})])
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 
@@ -40,7 +40,7 @@ input_details = interpreter.get_input_details()
 labels = ['sc', 'cc']
   
 # Carrega uma imagem para teste e adequa
-img = Image.open('1.jpg')
+img = Image.open('/home/pi/dados_projeto/1.jpg')
 larg, alt = img.size
 img2 = img
 img2 = img2.resize((320,320))
@@ -106,9 +106,9 @@ for i in range(len(scores)):
             outline=cor)
         draw.text((xmin + 10, ymin + 10),
             labels[int(classes[i])] + ' ' + str(round(scores[i]*100, 2)) + '%',
-            font = ImageFont.truetype('arial.ttf', 16), fill=cor)
+            fill=cor)
 
 
-img.save('resultado_qtd.png')
+img.save('/home/pi/dados_projeto/resultado_m3.png')
         
         

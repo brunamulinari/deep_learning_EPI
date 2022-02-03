@@ -16,7 +16,7 @@ input_details = interpreter.get_input_details()
 labels = ['sc', 'cc']
   
 # Carrega uma imagem para teste e adequa
-img = Image.open('1.jpg')
+img = Image.open('/home/pi/dados_projeto/1.jpg')
 larg, alt = img.size
 img2 = img
 img2 = img2.resize((320,320))
@@ -81,10 +81,9 @@ for i in range(len(scores)):
         draw.rectangle([(xmin, ymin), (xmax, ymax)],
             outline=cor)
         draw.text((xmin + 10, ymin + 10),
-            labels[int(classes[i])] + ' ' + str(round(scores[i]*100, 2)) + '%',
-            font = ImageFont.truetype('arial.ttf', 16), fill=cor)
+            labels[int(classes[i])] + ' ' + str(round(scores[i]*100, 2)) + '%', fill=cor)
 
 
-img.save('resultado_qtd.png')
+img.save('/home/pi/dados_projeto/resultado_m2.png')
         
         
