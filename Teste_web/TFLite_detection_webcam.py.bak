@@ -13,7 +13,6 @@
 #
 # I added my own method of drawing boxes and labels using OpenCV.
 # Use: python3 TFLite_detection_webcam.py --modeldir=Sample_TFLite_model
-# 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
 
 # Import packages
 import os
