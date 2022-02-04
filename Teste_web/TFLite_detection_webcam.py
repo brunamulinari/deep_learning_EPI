@@ -184,9 +184,9 @@ while True:
     interpreter.invoke()
 
     # Retrieve detection results
-    boxes = interpreter.get_tensor(output_details[0]['index'])[0] # Bounding box coordinates of detected objects
-    classes = interpreter.get_tensor(output_details[1]['index'])[0] # Class index of detected objects
-    scores = interpreter.get_tensor(output_details[2]['index'])[0] # Confidence of detected objects
+    boxes = interpreter.get_tensor(output_details[1]['index'])[0] # Bounding box coordinates of detected objects
+    classes = interpreter.get_tensor(output_details[3]['index'])[0] # Class index of detected objects
+    scores = interpreter.get_tensor(output_details[0]['index'])[0] # Confidence of detected objects
     #num = interpreter.get_tensor(output_details[3]['index'])[0]  # Total number of detected objects (inaccurate and not needed)
 
     # Loop over all detections and draw detection box if confidence is above minimum threshold
