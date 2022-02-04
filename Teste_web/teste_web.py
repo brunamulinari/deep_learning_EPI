@@ -108,7 +108,7 @@ while True:
     img_cvt = (img.astype('float32')/127.5)-1 # Limites entre -1 e 1
     img_cvt = cv2.resize(img_cvt, (320, 320)) # Ajusta o tamanho p/ entrada do modelo (320x320)
     img_cvt = cv2.cvtColor(img_cvt, cv2.COLOR_BGR2RGB) # Ajusta p/ formato de entrada (RGB)
-    img_cvt = np.expand_dims(img_cvt, axis=0) # Corrige p/ o tensor ([x, y, c] -> [1, x, y, c])
+    # img_cvt = np.expand_dims(img_cvt, axis=0) # Corrige p/ o tensor ([x, y, c] -> [1, x, y, c])
     
     # Prepara p/ Quantização
     es, zp = input_details[0]['quantization']
