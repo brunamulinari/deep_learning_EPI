@@ -59,6 +59,7 @@ class VideoStream:
 parser = argparse.ArgumentParser()
 parser.add_argument('--modelname', help='Name of the .tflite file, if different than modelo1.tflite',
                     default='modelo1.tflite')
+args = parser.parse_args()
 
 
 MODEL_NAME = args.modelname
