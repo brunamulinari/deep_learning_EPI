@@ -6,7 +6,7 @@ import numpy as np
 import io
 from threading import Thread
 import time
-import argparse
+
 
 
 # Inicializa nomes dos labels
@@ -55,18 +55,9 @@ class VideoStream:
         self.stopped = True
 
 
-# Define and parse input arguments
-parser = argparse.ArgumentParser()
-parser.add_argument('--modelname', help='Name of the .tflite file, if different than modelo1.tflite',
-                    default='modelo1.tflite')
-args = parser.parse_args()
-
-
-MODEL_NAME = args.modelname
-
 # Carrega o modelo e adquire informações das entradas
 # Load the TFLite model and allocate tensors.
-interpreter = tflite.Interpreter(model_path='Sample_TFLite_models/'+MODEL_NAME)
+interpreter = tflite.Interpreter(model_path='Sample_TFLite_models/modelo1.tflite')
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 
@@ -96,13 +87,6 @@ while True:
     img_cvt = (img.astype('float32')/127.5)-1 # Limites entre -1 e 1
     img_cvt = cv2.resize(img_cvt, (320, 320)) # Ajusta o tamanho p/ entrada do modelo (320x320)
     img_cvt = cv2.cvtColor(img_cvt, cv2.COLOR_BGR2RGB) # Ajusta p/ formato de entrada (RGB)
-    # img_cvt = np.expand_dims(img_cvt, axis=0) # Corrige p/ o tensor ([x, y, c] -> [1, x, y, c])
-    
-    # Prepara p/ Quantização
-    es, zp = input_details[0]['quantization']
-    img_cvt = img_cvt / es + zp
-    img_cvt = img_cvt.astype(input_details[0]['dtype'])
-
     img_cvt = np.expand_dims(img_cvt, axis=0) # Corrige p/ o tensor ([x, y, c] -> [1, x, y, c])
     
     # Apresenta imagem p/ o modelo

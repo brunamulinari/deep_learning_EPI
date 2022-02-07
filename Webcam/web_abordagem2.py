@@ -6,7 +6,6 @@ import numpy as np
 import io
 from threading import Thread
 import time
-import argparse
 
 
 # Inicializa nomes dos labels
@@ -55,17 +54,10 @@ class VideoStream:
         self.stopped = True
 
 
-# Define and parse input arguments
-parser = argparse.ArgumentParser()
-parser.add_argument('--modelname', help='Name of the .tflite file, if different than modelo1.tflite',
-                    default='modelo1.tflite')
-
-
-MODEL_NAME = args.modelname
 
 # Carrega o modelo e adquire informações das entradas
 # Load the TFLite model and allocate tensors.
-interpreter = tflite.Interpreter(model_path='Sample_TFLite_models/'+MODEL_NAME)
+interpreter = tflite.Interpreter(model_path='Sample_TFLite_models/modelo2.tflite')
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 
