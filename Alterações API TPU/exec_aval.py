@@ -137,7 +137,6 @@ for img in imagens:
         if contador>qtd_max:
             qtd_max = contador            
 
-    break
 
 tempo_fin = datetime.now()
 
