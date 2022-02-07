@@ -71,7 +71,7 @@ tempo_ini = datetime.now()
 qtd_max = 0
 
 for img in imagens:
-    nome = img.split('\\')[-1].split('.')[0]
+    nome = img.split('/')[-1].split('.')[0]
     img = cv2.imread(img)
     alt, larg, _ = img.shape
     img_cvt = (img.astype('float32')/127.5)-1 # Limites entre -1 e 1
